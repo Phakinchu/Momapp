@@ -20,6 +20,7 @@
         <activity android:name=".TipsActivity"></activity>
         <activity android:name=".ContractActicity"></activity>
         <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".InformationActivity"></activity>
     </application>
 
 </manifest>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MomApp</string>
+    <string name="menu_action_add">Add</string>
+    <string name="menu_action_tips">Tips</string>
+    <string name="menu_action_contract">Contract</string>
+    <string name="menu_action_setting">Setting</string>
+    <string name="menu_tip">Tip1</string>
 </resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tip1"
+        android:title="@string/menu_tip"
+        android:icon="@drawable/ic_tips"
+        />
+    <item
+        android:id="@+id/tip2"
+        android:title="@string/menu_tip"
+        android:icon="@drawable/ic_tips"/>
+    <item
+        android:id="@+id/tip3"
+        android:title="@string/menu_tip"
+        android:icon="@drawable/ic_tips"/>
+    <item
+        android:id="@+id/tip4"
+        android:title="@string/menu_tip"
+        android:icon="@drawable/ic_tips"/>
+</menu>
