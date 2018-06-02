@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(contract_intent);
                         break;
                     case R.id.action_setting:
-                        Intent setting_intent = new Intent(HomeActivity.this,SettingActivity.class);
+                        Intent setting_intent = new Intent(HomeActivity.this,Profile.class);
                         startActivity(setting_intent);
 
                 }

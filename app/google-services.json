@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "1018909794230",
+    "firebase_url": "https://momapp-32d6f.firebaseio.com",
+    "project_id": "momapp-32d6f",
+    "storage_bucket": "momapp-32d6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018909794230:android:7b9a300f9c661c5f",
+        "android_client_info": {
+          "package_name": "com.example.unemployed.momapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018909794230-hcv53gudjeo2vl99q125i1nlsg8e4ks9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.unemployed.momapp",
+            "certificate_hash": "bf482aa2aec346d63512b9c4f372c8dd45b71132"
+          }
+        },
+        {
+          "client_id": "1018909794230-sa11fj72momftr30ni86clcpnscu5ebv.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1018909794230-sa11fj72momftr30ni86clcpnscu5ebv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuCJsVW4wWBHmnWGZgLF90yDVu6Bi-N1w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018909794230-sa11fj72momftr30ni86clcpnscu5ebv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
