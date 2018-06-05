@@ -88,5 +88,4 @@ public class SettingActivity extends AppCompatActivity {
         Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show();
     }
 
-
 }
