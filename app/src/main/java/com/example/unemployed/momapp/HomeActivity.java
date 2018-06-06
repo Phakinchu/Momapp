@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -50,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     case R.id.action_add:
                         long date = calendarView.getDate();
-                        String DateOnCalendar = new SimpleDateFormat("MM/dd/yyyy").format(new Date(date));
+                        String DateOnCalendar = new SimpleDateFormat("dd/MM/yyyy").format(new Date(date));
                         final String DateOnCalendarforfirebase = new SimpleDateFormat("M+d+yyyy").format(new Date(date));
                         Log.i("Time", DateOnCalendarforfirebase);
                         final FirebaseUser user = mAuth.getCurrentUser();
@@ -76,7 +77,6 @@ public class HomeActivity extends AppCompatActivity {
                                 databaseError.getMessage();
                             }
                         });
-                        Toast.makeText(HomeActivity.this,"date "+date,Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(HomeActivity.this,DayActivity.class);
                         intent.putExtra("date",DateOnCalendar);
                         intent.putExtra("dateforfirebase",DateOnCalendarforfirebase);
