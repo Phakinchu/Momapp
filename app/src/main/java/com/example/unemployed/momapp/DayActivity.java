@@ -79,14 +79,14 @@ public class DayActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Long count = dataSnapshot.child(dateforfirebase).getValue(Long.class);
                     babycount.setText(String.valueOf(count));
-                    for(int i =0;i<idArray.length;i++){
+                    /*for(int i =0;i<idArray.length;i++){
                         checkBoxes[i]=(CheckBox)findViewById(idArray[i]);
                         if(i<count){
                             checkBoxes[i].setChecked(true);
                         }else {
                             checkBoxes[i].setChecked(false);
                         }
-                    }
+                    }*/
                 }
             }
 
