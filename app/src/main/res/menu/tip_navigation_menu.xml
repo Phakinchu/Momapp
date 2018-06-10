@@ -3,19 +3,25 @@
 
     <item
         android:id="@+id/tip1"
-        android:title="@string/menu_tip"
+        android:title="Tip1"
         android:icon="@drawable/ic_tips"
         />
     <item
         android:id="@+id/tip2"
-        android:title="@string/menu_tip"
+        android:title="Tip2"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip3"
-        android:title="@string/menu_tip"
+        android:title="Tip3"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip4"
-        android:title="@string/menu_tip"
+        android:title="Tip4"
         android:icon="@drawable/ic_tips"/>
+    <item
+        android:id="@+id/tip5"
+        android:icon="@drawable/ic_tips"
+        android:title="Tip5"
+
+    />
 </menu>

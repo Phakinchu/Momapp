@@ -38,7 +38,7 @@ public class DayActivity extends AppCompatActivity {
             R.id.checkBox13,R.id.checkBox14,R.id.checkBox15,R.id.checkBox16,R.id.checkBox17,R.id.checkBox18,R.id.checkBox19,
             R.id.checkBox20,R.id.checkBox21,R.id.checkBox22,R.id.checkBox23,R.id.checkBox24};
     private CheckBox[] checkBoxes = new CheckBox[idArray.length];
-    private static int number;
+    private String number;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +72,7 @@ public class DayActivity extends AppCompatActivity {
             up.setVisibility(View.GONE);
             down.setVisibility(View.GONE);
         }
+
         final Query userQuery = dref.child("User").child(user.getUid()).child("Date");
         userQuery.addValueEventListener(new ValueEventListener() {
             @Override
@@ -79,14 +80,6 @@ public class DayActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Long count = dataSnapshot.child(dateforfirebase).getValue(Long.class);
                     babycount.setText(String.valueOf(count));
-                    /*for(int i =0;i<idArray.length;i++){
-                        checkBoxes[i]=(CheckBox)findViewById(idArray[i]);
-                        if(i<count){
-                            checkBoxes[i].setChecked(true);
-                        }else {
-                            checkBoxes[i].setChecked(false);
-                        }
-                    }*/
                 }
             }
 
@@ -156,6 +149,14 @@ public class DayActivity extends AppCompatActivity {
 
             }
         });
+        number=babycount.getText().toString();
+        if(number!=null){
+            /*int counter = Integer.parseInt(number);
+            for(int i = 0;i<counter;i++){
+                if(i<counter) checkBoxes[i].setChecked(true);
+                else checkBoxes[i].setChecked(false);
+            }*/
+        }
 
     }
 

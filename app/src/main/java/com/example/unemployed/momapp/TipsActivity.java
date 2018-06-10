@@ -29,17 +29,24 @@ public class TipsActivity extends AppCompatActivity {
                 Intent intent = new Intent(TipsActivity.this, InformationActivity.class);
                 switch (item.getItemId()) {
                     case R.id.tip1:
-                        intent.putExtra("information",Readfile("test.txt"));
+                        intent.putExtra("information",Readfile("tip.txt"));
                         startActivity(intent);
                         return true;
                     case R.id.tip2:
-                        intent.putExtra("information",Readfile("test2.txt"));
+                        intent.putExtra("information",Readfile("tip2.txt"));
                         startActivity(intent);
                         return true;
                     case R.id.tip3:
+                        intent.putExtra("information",Readfile("tip3.txt"));
+                        startActivity(intent);
                         return true;
                     case R.id.tip4:
+                        intent.putExtra("information",Readfile("tip4.txt"));
+                        startActivity(intent);
                         return true;
+                    case R.id.tip5:
+                        intent.putExtra("information",Readfile("tip5.txt"));
+                        startActivity(intent);
                 }
                 return false;
             }
@@ -60,7 +67,6 @@ public class TipsActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Toast.makeText(TipsActivity.this, text, Toast.LENGTH_SHORT).show();
        return text;
     }
 }
