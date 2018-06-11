@@ -3,25 +3,25 @@
 
     <item
         android:id="@+id/tip1"
-        android:title="Tip1"
+        android:title="•	ลูกดิ้นทำไมนะ?"
         android:icon="@drawable/ic_tips"
         />
     <item
         android:id="@+id/tip2"
-        android:title="Tip2"
+        android:title="•	ลูกดิ้นเป็นยังหรอ?"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip3"
-        android:title="Tip3"
+        android:title="•	วิธีการนับลูกดิ้นแบบนับถึงสิบ"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip4"
-        android:title="Tip4"
+        android:title="•	เพิ่มสัมพันธ์พ่อ แม่และลูก"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip5"
         android:icon="@drawable/ic_tips"
-        android:title="Tip5"
+        android:title="•	อาการที่ควรมาโรงพยาบาลก่อนนัดและทันที"
 
     />
 </menu>
