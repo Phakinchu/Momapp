@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.action_add:
                         long date = calendarView.getDate();
                         String DateOnCalendar = new SimpleDateFormat("dd/MM/yyyy").format(new Date(date));
-                        final String DateOnCalendarforfirebase = new SimpleDateFormat("d+M+yyyy").format(new Date(date));
+                        final String DateOnCalendarforfirebase = new SimpleDateFormat("M+d+yyyy").format(new Date(date));
                         Log.i("Time", DateOnCalendarforfirebase);
                         final FirebaseUser user = mAuth.getCurrentUser();
 

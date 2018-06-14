@@ -56,7 +56,8 @@ public class Setting_time extends AppCompatActivity {
 
                 if (( timePicker.getCurrentHour()>12) || (timePicker.getCurrentHour()==12 && timePicker.getCurrentMinute()>=0 )) {
                     Toast.makeText(getApplicationContext(), "กรุณาอย่าตั้งเวลาเกิน 12 นาฬิกา", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    //startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    return;
                 }
 
                 String kuy = Integer.toString(timePicker.getCurrentHour());
