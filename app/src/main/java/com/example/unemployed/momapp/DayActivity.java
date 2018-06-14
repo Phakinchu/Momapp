@@ -1,5 +1,9 @@
 package com.example.unemployed.momapp;
 
+import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -73,14 +78,57 @@ public class DayActivity extends AppCompatActivity {
             down.setVisibility(View.GONE);
         }
 
-        final Query userQuery = dref.child("User").child(user.getUid()).child("Date");
+
+
+        final Query userQuery = dref.child("User").child(user.getUid());
         userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Long count = dataSnapshot.child(dateforfirebase).getValue(Long.class);
+                    Long count = dataSnapshot.child("Date").child(dateforfirebase).getValue(Long.class);
+                    String time = dataSnapshot.child("time").getValue(String.class);
                     babycount.setText(String.valueOf(count));
+
+
+                    Calendar calendar2 = Calendar.getInstance();
+                    calendar2.setTimeInMillis(System.currentTimeMillis());
+                    calendar2.set(Calendar.HOUR_OF_DAY, findHour("6",time));
+                    calendar2.set(Calendar.MINUTE, findMin("6",time));
+                    calendar2.set(Calendar.SECOND, 00);
+
+                    Calendar calendar3 = Calendar.getInstance();
+                    calendar3.setTimeInMillis(System.currentTimeMillis());
+                    calendar3.set(Calendar.HOUR_OF_DAY, findHour("12",time));
+                    calendar3.set(Calendar.MINUTE, findMin("12",time));
+                    calendar3.set(Calendar.SECOND, 00);
+
+                    if(Calendar.getInstance().before(calendar2)){
+                        Intent j = new Intent(getApplicationContext(),Noti_add6.class) ;
+                        Log.i("AlarmManager 6", "set !!!!!!!");
+                        PendingIntent pendingIntent2 = PendingIntent.getService(getApplicationContext(), 0, j, 0);
+                        AlarmManager alarmManager2 =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                        alarmManager2.set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent2);
+
+                    }
+                    else if(Calendar.getInstance().after(calendar2)){
+                        Log.i("AlarmManager 6", "not set !!!!!!!");
+                        //do nothing
+                    }
+
+                    if(Calendar.getInstance().before(calendar3)){
+                        Intent k = new Intent(getApplicationContext(),Noti_add12.class) ;
+                        Log.i("AlarmManager 12", "set !!!!!!!");
+                        PendingIntent pendingIntent3 = PendingIntent.getService(getApplicationContext(), 1, k, 0);
+                        AlarmManager alarmManager3 =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                        alarmManager3.set(AlarmManager.RTC_WAKEUP, calendar3.getTimeInMillis(), pendingIntent3);
+                    }
+                    else if(Calendar.getInstance().after(calendar2)){
+                        Log.i("AlarmManager 12", "not set !!!!!!!");
+                        //do nothing
+                    }
+
                 }
+
             }
 
             @Override
@@ -160,5 +208,56 @@ public class DayActivity extends AppCompatActivity {
 
     }
 
+
+
+    private Integer findHour(String time6or12 ,String time){
+        if(time6or12 == "6"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[0]);
+            x=x+6 ;
+            Log.i("x",""+x);
+            return x ;
+        }
+        else if(time6or12 == "12"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[0]);
+            x=x+12 ;
+            Log.i("x",""+x);
+            return x ;
+        }
+        return null ;
+    }
+
+    private Integer findMin(String time6or12 ,String time){
+        if(time6or12 == "6"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[1]);
+            Log.i("x",""+x);
+            return x ;
+        }
+        else if(time6or12 == "12"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[1]);
+            Log.i("x",""+x);
+            return x ;
+        }
+        return null ;
+    }
 
 }

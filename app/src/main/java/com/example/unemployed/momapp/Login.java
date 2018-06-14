@@ -1,11 +1,14 @@
 package com.example.unemployed.momapp;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
 
 public class Login extends AppCompatActivity {
     TextView username, password, forgetpass , signup ;
@@ -99,6 +104,33 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.getValue() != null) {
+
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTimeInMillis(System.currentTimeMillis());
+                                calendar.set(Calendar.HOUR_OF_DAY,8);
+                                calendar.set(Calendar.MINUTE, 00);
+                                calendar.set(Calendar.SECOND, 00);
+                                if(Calendar.getInstance().before(calendar)){
+                                    Intent j = new Intent(getApplicationContext(),Noti_morning.class) ;
+                                    Log.i("AlarmManager Moning", "set !!!!!!!");
+                                    PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
+                                    AlarmManager alarmManager =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+                                }
+                                else if(Calendar.getInstance().after(calendar)){
+                                    calendar.add( Calendar.DATE, 1 );
+                                    calendar.set(Calendar.HOUR_OF_DAY,8);
+                                    calendar.set(Calendar.MINUTE, 00);
+                                    calendar.set(Calendar.SECOND, 00);
+
+                                    Intent j = new Intent(getApplicationContext(),Noti_morning.class) ;
+                                    PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
+                                    AlarmManager alarmManager =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                                    Log.i("AlarmManager tmr moning", "set !!!!!!!");
+                                    //do nothing
+                                }
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), Profile.class));
                             }

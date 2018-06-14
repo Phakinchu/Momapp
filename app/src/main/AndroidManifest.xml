@@ -16,14 +16,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"/>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".DayActivity" />
         <activity android:name=".TipsActivity" />
         <activity android:name=".ContractActicity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".InformationActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register" />
+
+        <service
+            android:name=".Noti_morning"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".Noti_add6"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".Noti_add12"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".Noti_addsix"
+            android:exported="false" />
+        <service
+            android:name=".Noti_addtwelve"
+            android:exported="false" />
+
+        <activity android:name=".Setting_time"></activity>
     </application>
 
 </manifest>

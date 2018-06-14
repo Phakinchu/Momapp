@@ -33,11 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="84dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bordersetting"
-            android:text="TO HOME"
+            android:text="ตั้งเวลานับ"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/home" />
 
         <TextView
             android:id="@+id/textView2"
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="192dp"
-            android:text="TextView"
+            android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4" />
 
@@ -106,16 +106,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
-            android:text="TextView"
+            android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/duedate"
             android:layout_width="wrap_content"
-            android:layout_height="16dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:text="TextView"
+            android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
@@ -124,23 +124,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="TextView"
+            android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/logout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="68dp"
+            android:layout_height="19dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:text="Log out"
             android:textColor="#1639c4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tohome"
-            app:layout_constraintVertical_bias="0.047" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/edit"
@@ -148,12 +148,48 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="Edit"
+            android:text="แก้ไขข้อมูล"
             android:background="@drawable/bordersetting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.305"
             app:layout_constraintStart_toEndOf="@+id/tohome"
             app:layout_constraintTop_toTopOf="@+id/tohome" />
+
+        <TextView
+            android:id="@+id/timemomsetis"
+            android:layout_width="118dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="เวลาที่คุณแม่ตั้งไว้ : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/mom"
+            android:layout_width="118dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:text="ยังไม่ได้ตั้งเวลา"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintStart_toEndOf="@+id/timemomsetis"
+            app:layout_constraintTop_toTopOf="@+id/timemomsetis" />
+
+        <Button
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="กลับหน้ากลัก"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timemomsetis" />
 
         <!--<TimePicker-->
         <!--android:layout_width=""-->

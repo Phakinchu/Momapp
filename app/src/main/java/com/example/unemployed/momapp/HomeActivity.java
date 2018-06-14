@@ -1,11 +1,20 @@
 package com.example.unemployed.momapp;
 
 
+import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,11 +45,10 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
     private static final String Tag = "HomeActivity";
     private CalendarView calendarView;
+    TextView first_text,second_text ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
-    String firstcheck = "12:00:00";
-    String secondcheck = "18:00:00";
-    TextView first, second;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,42 +56,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
+//        first_text = findViewById(R.id.first_text);
+//        second_text = findViewById(R.id.second_text);
         calendarView = (CalendarView) findViewById(R.id.calendar);
         //----------------------------------------------------------
-        final Date firstchecktime = java.sql.Time.valueOf(firstcheck);
-        final Date secondchecktime = java.sql.Time.valueOf(secondcheck);
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                second = findViewById(R.id.second_text);
-                                first = findViewById(R.id.first_text);
-                                long date = System.currentTimeMillis();
-                                SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss");
-                                String datastring = timeformat.format(date);
-                                Date NowChecktime = java.sql.Time.valueOf(datastring);
-                                Toast.makeText(HomeActivity.this, NowChecktime.toString() + " / " + firstchecktime.toString()+" / "+secondchecktime.toString(), Toast.LENGTH_SHORT).show();
-                                if (NowChecktime.after(firstchecktime)) {
-                                    first.setText("true");
-                                }
-                                if(NowChecktime.after(secondchecktime)){
-                                    second.setText("true");
-                                }
-                            }
-                        });
-                    }
 
-                } catch (InterruptedException e) {
-
-                }
-            }
-        };
-        t.start();
         //-------------------------------------------------------------------------
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -147,6 +124,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 final FirebaseUser user = mAuth.getCurrentUser();
 
+
+
                 Query userQuery = dref.child("User").child(user.getUid());
                 userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -174,7 +153,38 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        first_text.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(isMyServiceRunning(Noti_add6.class)){
+//                    Log.i("OOOOOOOOO :","Noti_add6 Online" );
+//                }
+//                else if(isMyServiceRunning(Noti_add6.class)!= true){
+//                    Log.i("OOOOOOOOO :","Noti_add6 offline" );
+//                }
+//
+//
+//            }
+//        });
+//
+//        second_text.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                stopService(new Intent(getApplicationContext(), Noti_addsix.class));
+//            }
+//        });
+
     }
 
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

@@ -1,12 +1,21 @@
 package com.example.unemployed.momapp;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,12 +26,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Profile extends AppCompatActivity {
-    TextView age, pregnancy, duedate, period, logout;
-    Button tohome, edit ;
+    TextView age, pregnancy, duedate, period, logout, mom;
+    Button tohome, edit, home ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
-
+    private NotificationManager notifManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +50,8 @@ public class Profile extends AppCompatActivity {
         period = findViewById(R.id.period);
         logout = findViewById(R.id.logout);
         edit = findViewById(R.id.edit);
+        mom = findViewById(R.id.mom);
+        home = findViewById(R.id.home);
 
         tohome = findViewById(R.id.tohome);
 
@@ -50,11 +64,13 @@ public class Profile extends AppCompatActivity {
                     String Duedate = dataSnapshot.child("duedate").getValue(String.class);
                     String Period = dataSnapshot.child("period").getValue(String.class);
                     String Pregnancy = dataSnapshot.child("pregnancy").getValue(String.class);
+                    String timesetting = dataSnapshot.child("time").getValue(String.class);
 
                     age.setText(Age);
                     duedate.setText(Duedate);
                     period.setText(Period);
                     pregnancy.setText(Pregnancy);
+                    mom.setText(timesetting);
                 }
             }
 
@@ -64,10 +80,20 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        tohome.setOnClickListener(new View.OnClickListener() {
+//        StartThread("23:55:00",addTime("6",timeinday),addTime("12",timeinday));
+
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent x = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(x);
+            }
+        });
+
+        tohome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent x = new Intent(getApplicationContext(), Setting_time.class);
                 startActivity(x);
             }
         });
