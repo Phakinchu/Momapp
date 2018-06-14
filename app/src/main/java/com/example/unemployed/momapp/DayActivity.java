@@ -120,7 +120,7 @@ public class DayActivity extends AppCompatActivity {
                     String time = dataSnapshot.child("time").getValue(String.class);
                     babycount.setText(String.valueOf(count));
                     for(int i =0 ; i<=(int) (long) count-1 ; i++){
-                        if((int) (long) count==0){
+                        if((int) (long) count==0 || count > 24){
                             break;
                         }
                         else {
