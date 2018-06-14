@@ -38,7 +38,8 @@ public class DayActivity extends AppCompatActivity {
     private Button backbtn, up, down;
     DatabaseReference dref;
     FirebaseAuth mAuth;
-    private static final int [] idArray ={R.id.checkBox1,R.id.checkBox2,R.id.checkBox3,R.id.checkBox4,R.id.checkBox5,
+    Integer checkcheckbox ;
+    private int [] idArray ={R.id.checkBox1,R.id.checkBox2,R.id.checkBox3,R.id.checkBox4,R.id.checkBox5,
             R.id.checkBox6,R.id.checkBox7,R.id.checkBox8,R.id.checkBox9,R.id.checkBox10,R.id.checkBox11,R.id.checkBox12,
             R.id.checkBox13,R.id.checkBox14,R.id.checkBox15,R.id.checkBox16,R.id.checkBox17,R.id.checkBox18,R.id.checkBox19,
             R.id.checkBox20,R.id.checkBox21,R.id.checkBox22,R.id.checkBox23,R.id.checkBox24};
@@ -48,11 +49,41 @@ public class DayActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
+
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
         final FirebaseUser user = mAuth.getCurrentUser();
 
         textView = (TextView) findViewById(R.id.date);
+        checkBoxes[0] = findViewById(R.id.checkBox1);
+        checkBoxes[1] = findViewById(R.id.checkBox2);
+        checkBoxes[2] = findViewById(R.id.checkBox3);
+        checkBoxes[3] = findViewById(R.id.checkBox4);
+        checkBoxes[4] = findViewById(R.id.checkBox5);
+        checkBoxes[5] = findViewById(R.id.checkBox6);
+        checkBoxes[6] = findViewById(R.id.checkBox7);
+        checkBoxes[7] = findViewById(R.id.checkBox8);
+        checkBoxes[8] = findViewById(R.id.checkBox9);
+        checkBoxes[9] = findViewById(R.id.checkBox10);
+        checkBoxes[10] = findViewById(R.id.checkBox11);
+        checkBoxes[11] = findViewById(R.id.checkBox12);
+        checkBoxes[12] = findViewById(R.id.checkBox13);
+        checkBoxes[13] = findViewById(R.id.checkBox14);
+        checkBoxes[14] = findViewById(R.id.checkBox15);
+        checkBoxes[15] = findViewById(R.id.checkBox16);
+        checkBoxes[16] = findViewById(R.id.checkBox17);
+        checkBoxes[17] = findViewById(R.id.checkBox18);
+        checkBoxes[18] = findViewById(R.id.checkBox19);
+        checkBoxes[19] = findViewById(R.id.checkBox20);
+        checkBoxes[20] = findViewById(R.id.checkBox21);
+        checkBoxes[21] = findViewById(R.id.checkBox22);
+        checkBoxes[22] = findViewById(R.id.checkBox23);
+        checkBoxes[23] = findViewById(R.id.checkBox24);
+
+
+
+
+
         babycount = findViewById(R.id.babycount);
         long day = new Date().getTime();
         String to_day = new SimpleDateFormat("dd/MM/yyyy").format(new Date(day));
@@ -88,7 +119,24 @@ public class DayActivity extends AppCompatActivity {
                     Long count = dataSnapshot.child("Date").child(dateforfirebase).getValue(Long.class);
                     String time = dataSnapshot.child("time").getValue(String.class);
                     babycount.setText(String.valueOf(count));
+                    for(int i =0 ; i<=(int) (long) count-1 ; i++){
+                        if((int) (long) count==0){
+                            break;
+                        }
+                        else {
+                            checkBoxes[i].setChecked(true);
+                        }
+                    }
 
+                    for(int i =23 ; i>=(int) (long) count ; i--){
+                        if((int) (long) count<=0){
+                            checkBoxes[0].setChecked(false);
+                            break;
+                        }
+                        else {
+                            checkBoxes[i].setChecked(false);
+                        }
+                    }
 
                     Calendar calendar2 = Calendar.getInstance();
                     calendar2.setTimeInMillis(System.currentTimeMillis());
@@ -183,6 +231,7 @@ public class DayActivity extends AppCompatActivity {
 
                         p = p - 1;
                         // Set value and report transaction success
+
                         mutableData.setValue(p);
                         return Transaction.success(mutableData);
                     }

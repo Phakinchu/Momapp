@@ -121,7 +121,6 @@ public class Setting_time extends AppCompatActivity {
                     }
                 });
 
-
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             }
         });
