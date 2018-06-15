@@ -68,32 +68,30 @@
         android:layout_width="253dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="email@gmail.com"
         android:inputType="textPersonName"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="253dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/forgetpass"
@@ -115,13 +113,12 @@
         android:layout_width="151dp"
         android:layout_height="22dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
         android:text="Don't have an account ?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgetpass"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/signup"
@@ -130,10 +127,24 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Sign up"
+        android:textColor="#0004ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="350dp"
+        android:layout_height="155dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgetpass"
+        app:srcCompat="@drawable/mek1" />
 
 
 </android.support.constraint.ConstraintLayout>

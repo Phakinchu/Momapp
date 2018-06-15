@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="อายุ :"
+            android:text="อายุคุณแม่ :"
             style="@style/thai"
             app:layout_constraintStart_toStartOf="@+id/header_tip"
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
@@ -103,7 +103,8 @@
             android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="4dp"
             android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -112,7 +113,7 @@
             android:id="@+id/pregnancy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="88dp"
             android:text="ไม่ได้ตั้งค่า"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView5" />
@@ -196,13 +197,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="กลับหน้ากลัก"
+            android:text="กลับหน้าหลัก"
             android:textSize="18dp"
             android:fontFamily="@font/itim"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timemomsetis" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="ปี"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/age"
+            app:layout_constraintTop_toTopOf="@+id/age" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="สัปดาห์"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/pregnancy"
+            app:layout_constraintTop_toTopOf="@+id/pregnancy" />
 
         <!--<TimePicker-->
         <!--android:layout_width=""-->

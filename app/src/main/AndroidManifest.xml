@@ -44,7 +44,8 @@
             android:name=".Noti_addtwelve"
             android:exported="false" />
 
-        <activity android:name=".Setting_time"></activity>
+        <activity android:name=".Setting_time" />
+        <activity android:name=".First_time"></activity>
     </application>
 
 </manifest>

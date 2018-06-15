@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Add"
+                android:text="นับลูกดิ้น"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"

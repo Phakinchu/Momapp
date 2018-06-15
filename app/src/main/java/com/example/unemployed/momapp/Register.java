@@ -34,7 +34,6 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.password);
         progressDialog = new ProgressDialog(this);
         signup = findViewById(R.id.signup);
-
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

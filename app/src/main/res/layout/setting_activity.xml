@@ -35,24 +35,30 @@
             style="@style/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="60dp"
             android:text="SAVE"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintHorizontal_bias="0.686"
             app:layout_constraintStart_toEndOf="@+id/next"
-            app:layout_constraintTop_toBottomOf="@+id/period" />
+            app:layout_constraintTop_toBottomOf="@+id/period"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/next"
             style="@style/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="72dp"
             android:layout_marginTop="60dp"
             android:text="BACK"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/period" />
+            app:layout_constraintTop_toBottomOf="@+id/period"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/header_tip"
@@ -70,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="อายุ :"
+            android:text="อายุคุณแม่ :"
             style="@style/detail"
             app:layout_constraintStart_toStartOf="@+id/header_tip"
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
@@ -87,13 +93,11 @@
 
         <TextView
             android:id="@+id/textView6"
+            style="@style/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="168dp"
             android:layout_marginTop="20dp"
             android:text="ประจำเดือนวันแรกของครั้งสุดท้าย :"
-            style="@style/detail"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -109,13 +113,13 @@
 
         <EditText
             android:id="@+id/age"
-            android:layout_width="70dp"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
+            android:layout_marginStart="52dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="ex.38"
+            android:hint="ex.38 / หน่วยปี"
             android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#818181"
@@ -125,13 +129,13 @@
 
         <EditText
             android:id="@+id/pregnancy"
-            android:layout_width="70dp"
+            android:layout_width="132dp"
             android:layout_height="35dp"
             android:layout_marginStart="60dp"
             android:layout_marginTop="4dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="ex.8"
+            android:hint="ex.8 / หน่วยสัปดาห์"
             android:inputType="number"
             android:textSize="14dp"
             app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -155,7 +159,7 @@
             android:layout_width="120dp"
             android:layout_height="35dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:gravity="center"
             android:hint="ex 24/05/2017"
