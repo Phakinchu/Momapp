@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class Login extends AppCompatActivity {
-    TextView username, password, forgetpass , signup ;
+    TextView username, password, forgetpass , signup ,welcome;
     Button login ;
     DatabaseReference dref ;
     FirebaseAuth mAunt ;
@@ -42,6 +43,9 @@ public class Login extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
+        welcome = findViewById(R.id.textView8);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "chicle.ttf");
+        welcome.setTypeface(typeface);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         signup = findViewById(R.id.signup);
@@ -63,6 +67,7 @@ public class Login extends AppCompatActivity {
                 startActivity(x);
             }
         });
+
 
 //        forgetpass.setOnClickListener(new View.OnClickListener() {
 //            @Override

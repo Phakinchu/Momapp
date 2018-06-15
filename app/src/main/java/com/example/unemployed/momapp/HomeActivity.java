@@ -17,6 +17,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView first_text,second_text ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
+    CardView cardView_add,cardView_tips,cardView_setting,cardView_contract;
 
 
     @Override
@@ -59,60 +61,71 @@ public class HomeActivity extends AppCompatActivity {
 //        first_text = findViewById(R.id.first_text);
 //        second_text = findViewById(R.id.second_text);
         calendarView = (CalendarView) findViewById(R.id.calendar);
+        cardView_add = findViewById(R.id.cardadd);
+        cardView_tips= findViewById(R.id.cardtip);
+        cardView_setting = findViewById(R.id.cardsetting);
+        cardView_contract = findViewById(R.id.cardcontract);
         //----------------------------------------------------------
 
         //-------------------------------------------------------------------------
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_add:
-                        long date = calendarView.getDate();
-                        String DateOnCalendar = new SimpleDateFormat("dd/MM/yyyy").format(new Date(date));
-                        final String DateOnCalendarforfirebase = new SimpleDateFormat("d+M+yyyy").format(new Date(date));
-                        Log.i("Time", DateOnCalendarforfirebase);
-                        final FirebaseUser user = mAuth.getCurrentUser();
+            public void onClick(View v) {
+                long date = calendarView.getDate();
+                String DateOnCalendar = new SimpleDateFormat("dd/MM/yyyy").format(new Date(date));
+                final String DateOnCalendarforfirebase = new SimpleDateFormat("d+M+yyyy").format(new Date(date));
+                Log.i("Time", DateOnCalendarforfirebase);
+                final FirebaseUser user = mAuth.getCurrentUser();
 
-                        Query userQuery = dref.child("User").child(user.getUid());
-                        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.exists()) {
-                                    Log.i("datesanpshot", "exitsts: ");
-                                    if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == false) {
-                                        Log.i("datesanpshot", "not have child DateOnfirebase: ");
-                                        dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(0);
-                                    } else if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == true) {
-                                        Log.i("datesanpshot", "have child DateOnfirebase: ");
-                                    }
-                                }
+                Query userQuery = dref.child("User").child(user.getUid());
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            Log.i("datesanpshot", "exitsts: ");
+                            if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == false) {
+                                Log.i("datesanpshot", "not have child DateOnfirebase: ");
+                                dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(0);
+                            } else if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == true) {
+                                Log.i("datesanpshot", "have child DateOnfirebase: ");
                             }
+                        }
+                    }
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                databaseError.getMessage();
-                            }
-                        });
-                        Intent intent = new Intent(HomeActivity.this, DayActivity.class);
-                        intent.putExtra("date", DateOnCalendar);
-                        intent.putExtra("dateforfirebase", DateOnCalendarforfirebase);
-                        startActivity(intent);
-                        break;
-                    case R.id.action_tips:
-                        Intent tips_intent = new Intent(HomeActivity.this, TipsActivity.class);
-                        startActivity(tips_intent);
-                        break;
-                    case R.id.action_contract:
-                        Intent contract_intent = new Intent(HomeActivity.this, ContractActicity.class);
-                        startActivity(contract_intent);
-                        break;
-                    case R.id.action_setting:
-                        Intent setting_intent = new Intent(HomeActivity.this, Profile.class);
-                        startActivity(setting_intent);
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        databaseError.getMessage();
+                    }
+                });
+                Intent intent = new Intent(HomeActivity.this, DayActivity.class);
+                intent.putExtra("date", DateOnCalendar);
+                intent.putExtra("dateforfirebase", DateOnCalendarforfirebase);
+                startActivity(intent);
 
-                }
-                return false;
+            }
+        });
+        cardView_tips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tips_intent = new Intent(HomeActivity.this, TipsActivity.class);
+                startActivity(tips_intent);
+
+            }
+        });
+        cardView_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setting_intent = new Intent(HomeActivity.this, Profile.class);
+                startActivity(setting_intent);
+
+            }
+        });
+        cardView_contract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contract_intent = new Intent(HomeActivity.this, ContractActicity.class);
+                startActivity(contract_intent);
+
             }
         });
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

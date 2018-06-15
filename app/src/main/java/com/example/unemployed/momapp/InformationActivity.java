@@ -8,13 +8,17 @@ import android.widget.TextView;
 
 public class InformationActivity extends AppCompatActivity{
     TextView information_tip;
+    TextView header_tip;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.information_layout);
         information_tip = findViewById(R.id.information);
+        header_tip = findViewById(R.id.header_tip);
         Intent income = getIntent();
         String text = income.getStringExtra("information");
+        String headertext = income.getStringExtra("header");
         information_tip.setText(text);
+        header_tip.setText(headertext);
     }
 }

@@ -190,6 +190,7 @@ public class DayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DayActivity.this, HomeActivity.class);
+                finish();
                 startActivity(intent);
             }
         });

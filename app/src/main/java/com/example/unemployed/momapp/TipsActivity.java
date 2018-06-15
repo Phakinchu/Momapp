@@ -30,22 +30,27 @@ public class TipsActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.tip1:
                         intent.putExtra("information",Readfile("tip.txt"));
+                        intent.putExtra("header","ความสำคัญและประโยชน์ของการนับลูกดิ้น");
                         startActivity(intent);
                         return true;
                     case R.id.tip2:
                         intent.putExtra("information",Readfile("tip2.txt"));
+                        intent.putExtra("header","เมื่อลูกดิ้นคุณเเม่จะรู้สึกอย่างไร");
                         startActivity(intent);
                         return true;
                     case R.id.tip3:
                         intent.putExtra("information",Readfile("tip3.txt"));
+                        intent.putExtra("header","วิธีการนับลูกดิ้นแบบนับถึงสิบ");
                         startActivity(intent);
                         return true;
                     case R.id.tip4:
                         intent.putExtra("information",Readfile("tip4.txt"));
+                        intent.putExtra("header","เมื่อลูกดิ้นเราจะสร้างความสัมพันธภาพกับลูกน้อยได้อย่างไร");
                         startActivity(intent);
                         return true;
                     case R.id.tip5:
                         intent.putExtra("information",Readfile("tip5.txt"));
+                        intent.putExtra("header","อาการผิดปกติที่ควรมาโรงพยาบาล");
                         startActivity(intent);
                 }
                 return false;

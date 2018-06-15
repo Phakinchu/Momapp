@@ -28,7 +28,7 @@ import java.util.Date;
 public class Setting_time extends AppCompatActivity {
     Button settime ;
     TimePicker timePicker ;
-    TextView cancel ;
+    Button cancel ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
     @Override

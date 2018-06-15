@@ -9,13 +9,15 @@
 
     <TextView
         android:id="@+id/textView8"
+        style="@style/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
         android:text="Welcome"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:fontFamily="@font/chicle" />
 
     <TextView
         android:id="@+id/textView9"
@@ -23,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="สวัสดี ...กรุณาเข้าสู่ระบบ"
+        style="@style/detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -34,15 +37,17 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Username :"
+        style="@style/system"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Password :"
+        style="@style/system"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -92,13 +97,14 @@
 
     <TextView
         android:id="@+id/forgetpass"
-        android:layout_width="112dp"
+        android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:lines="2"
         android:text="Forget password"
         android:textColor="#0838d7"
+        style="@style/detail"
         app:layout_constraintEnd_toStartOf="@+id/login"
         app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="parent"

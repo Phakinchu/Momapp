@@ -73,6 +73,13 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             }
         });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            }
+        });
 
 
     }
