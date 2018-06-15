@@ -37,12 +37,6 @@
             android:name=".Noti_add12"
             android:enabled="true"
             android:exported="false" />
-        <service
-            android:name=".Noti_addsix"
-            android:exported="false" />
-        <service
-            android:name=".Noti_addtwelve"
-            android:exported="false" />
 
         <activity android:name=".Setting_time" />
         <activity android:name=".First_time"></activity>

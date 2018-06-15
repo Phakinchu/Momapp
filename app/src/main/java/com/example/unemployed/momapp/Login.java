@@ -137,7 +137,7 @@ public class Login extends AppCompatActivity {
                                     //do nothing
                                 }
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             }
                         }
                         @Override

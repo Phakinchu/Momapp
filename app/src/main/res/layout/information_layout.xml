@@ -22,6 +22,8 @@
             android:text="header"
             android:textColor="#800000"
             android:layout_marginLeft="10dp"
+            android:textSize="26dp"
+            android:fontFamily="@font/itim"
             android:lines="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +46,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="example information"
+                android:textSize="22dp"
                 android:textColor="@color/black" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

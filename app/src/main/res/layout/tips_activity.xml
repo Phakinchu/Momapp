@@ -15,13 +15,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
-        android:fontFamily="@font/chicle"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/itim"
         android:gravity="center"
-        android:text="Tips"
+        android:text="ชวนรู้"
+        android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -34,10 +38,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.design.widget.NavigationView
-            android:layout_gravity="center"
             android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
+            android:layout_width="363dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             app:itemIconTint="@color/salmon"
             app:menu="@menu/tip_navigation_menu" />
     </LinearLayout>

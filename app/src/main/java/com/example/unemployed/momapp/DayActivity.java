@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,10 +80,6 @@ public class DayActivity extends AppCompatActivity {
         checkBoxes[21] = findViewById(R.id.checkBox22);
         checkBoxes[22] = findViewById(R.id.checkBox23);
         checkBoxes[23] = findViewById(R.id.checkBox24);
-
-
-
-
 
         babycount = findViewById(R.id.babycount);
         long day = new Date().getTime();
@@ -190,7 +187,6 @@ public class DayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DayActivity.this, HomeActivity.class);
-                finish();
                 startActivity(intent);
             }
         });

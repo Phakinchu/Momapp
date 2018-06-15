@@ -167,26 +167,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-//        first_text.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(isMyServiceRunning(Noti_add6.class)){
-//                    Log.i("OOOOOOOOO :","Noti_add6 Online" );
-//                }
-//                else if(isMyServiceRunning(Noti_add6.class)!= true){
-//                    Log.i("OOOOOOOOO :","Noti_add6 offline" );
-//                }
-//
-//
-//            }
-//        });
-//
-//        second_text.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                stopService(new Intent(getApplicationContext(), Noti_addsix.class));
-//            }
-//        });
 
     }
 
