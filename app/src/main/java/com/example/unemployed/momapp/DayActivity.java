@@ -27,6 +27,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,7 +54,7 @@ public class DayActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
-        final FirebaseUser user = mAuth.getCurrentUser();
+//        final FirebaseUser user = mAuth.getCurrentUser();
 
         textView = (TextView) findViewById(R.id.date);
         checkBoxes[0] = findViewById(R.id.checkBox1);
@@ -107,33 +108,105 @@ public class DayActivity extends AppCompatActivity {
         }
 
 
-
-        final Query userQuery = dref.child("User").child(user.getUid());
-        userQuery.addValueEventListener(new ValueEventListener() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null){
+            Log.i("user is", "null");
+            Log.i("useris", " "+user);
+        }
+        else {
+            Log.i("user is", " not null ");
+            Log.i("useris", " "+user);
+        }
+        dref.child("User").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Long count = dataSnapshot.child("Date").child(dateforfirebase).getValue(Long.class);
-                    String time = dataSnapshot.child("time").getValue(String.class);
-                    babycount.setText(String.valueOf(count));
-                    for(int i =0 ; i<=(int) (long) count-1 ; i++){
-                        if((int) (long) count==0 || count > 24){
-                            break;
+
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Log.i("fire dref", "is: "+dref);
+                    Log.i("fire user", "is: "+mAuth.getCurrentUser());
+                    Log.i("print user infor", " "+dref.child("User").child(user.getUid()));
+                    if (dataSnapshot.hasChild("Date/" + dateforfirebase) == false) {
+                        Log.i("datesanpshot", "not have child DateOnfirebase: ");
+                        long  kuy = 0 ;
+                        dref.child("User").child(user.getUid()).child("Date").child(dateforfirebase).setValue(kuy);
+
+                    } else if (dataSnapshot.hasChild("Date/" + dateforfirebase) == true) {
+                        Log.i("datesanpshot", "have child DateOnfirebase: ");
+                    }
+                    Log.i("print user infor", " "+dref.child("User").child(user.getUid()));
+
+                    String Age = dataSnapshot.child("age").getValue(String.class);
+                    Log.i("Age from firebase", " "+ Age);
+
+                    try{
+                        long count = (long) dataSnapshot.child("Date").child(dateforfirebase).getValue();
+                        Log.i("got null Point", "Noooooo ");
+                        babycount.setText(String.valueOf(count));
+                        for(int i =0 ; i<= count-1 ; i++){
+                            if((int) (long) count==0 || count > 24){
+                                break;
+                            }
+                            else {
+                                checkBoxes[i].setChecked(true);
+                            }
                         }
-                        else {
-                            checkBoxes[i].setChecked(true);
+
+                        for(int i =23 ; i>=count ; i--){
+                            if((int) (long) count<=0){
+                                checkBoxes[0].setChecked(false);
+                                break;
+                            }
+                            else {
+                                checkBoxes[i].setChecked(false);
+                            }
+                        }
+                    }
+                    catch (NullPointerException e){
+                        Log.i("got null Point", "yes ");
+                        long count = 0 ;
+                        babycount.setText(String.valueOf(count));
+                        for(int i =0 ; i<= count-1 ; i++){
+                            if((int) (long) count==0 || count > 24){
+                                break;
+                            }
+                            else {
+                                checkBoxes[i].setChecked(true);
+                            }
+                        }
+
+                        for(int i =23 ; i>=count ; i--){
+                            if((int) (long) count<=0){
+                                checkBoxes[0].setChecked(false);
+                                break;
+                            }
+                            else {
+                                checkBoxes[i].setChecked(false);
+                            }
                         }
                     }
 
-                    for(int i =23 ; i>=(int) (long) count ; i--){
-                        if((int) (long) count<=0){
-                            checkBoxes[0].setChecked(false);
-                            break;
-                        }
-                        else {
-                            checkBoxes[i].setChecked(false);
-                        }
-                    }
+//                    long count = (long) dataSnapshot.child("Date").child(dateforfirebase).getValue();
+                    String time = dataSnapshot.child("time").getValue(String.class);
+//                    babycount.setText(String.valueOf(count));
+//                    for(int i =0 ; i<= count-1 ; i++){
+//                        if((int) (long) count==0 || count > 24){
+//                            break;
+//                        }
+//                        else {
+//                            checkBoxes[i].setChecked(true);
+//                        }
+//                    }
+//
+//                    for(int i =23 ; i>=count ; i--){
+//                        if((int) (long) count<=0){
+//                            checkBoxes[0].setChecked(false);
+//                            break;
+//                        }
+//                        else {
+//                            checkBoxes[i].setChecked(false);
+//                        }
+//                   }
 
                     Calendar calendar2 = Calendar.getInstance();
                     calendar2.setTimeInMillis(System.currentTimeMillis());
@@ -194,7 +267,7 @@ public class DayActivity extends AppCompatActivity {
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FirebaseUser user = mAuth.getCurrentUser();
                 dref.child("User").child(user.getUid()).child("Date").child(dateforfirebase).runTransaction(new Transaction.Handler() {
                     @Override
                     public Transaction.Result doTransaction(MutableData mutableData) {
@@ -213,8 +286,6 @@ public class DayActivity extends AppCompatActivity {
                         Log.d("tran", "postTransaction:onComplete:" + databaseError);
                     }
                 });
-                finish();
-                startActivity(new Intent(DayActivity.this,HomeActivity.class));
 
             }
         });
@@ -222,6 +293,7 @@ public class DayActivity extends AppCompatActivity {
         down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseUser user = mAuth.getCurrentUser();
                 dref.child("User").child(user.getUid()).child("Date").child(dateforfirebase).runTransaction(new Transaction.Handler() {
                     @Override
                     public Transaction.Result doTransaction(MutableData mutableData) {
@@ -241,8 +313,6 @@ public class DayActivity extends AppCompatActivity {
                         Log.d("tran", "postTransaction:onComplete:" + databaseError);
                     }
                 });
-                finish();
-                startActivity(new Intent(DayActivity.this,HomeActivity.class));
             }
         });
         number=babycount.getText().toString();

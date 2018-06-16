@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 public class SettingActivity extends AppCompatActivity {
     EditText age , pregnancy , duedate , period ;
@@ -70,14 +71,14 @@ public class SettingActivity extends AppCompatActivity {
 
                 saveUserInformation();
                 finish();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(SettingActivity.this, HomeActivity.class));
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(SettingActivity.this, HomeActivity.class));
             }
         });
 

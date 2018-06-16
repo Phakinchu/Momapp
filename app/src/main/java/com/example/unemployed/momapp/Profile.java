@@ -110,6 +110,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
+                if(mAuth == null){
+                    Log.i("user is", "null");
+                    Log.i("useris", " "+mAuth);
+                }
+                else {
+                    Log.i("user is", " not null ");
+                    Log.i("useris", " "+mAuth);
+                }
                 finish();
                 Intent x = new Intent(getApplicationContext(), Login.class);
                 startActivity(x);

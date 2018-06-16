@@ -85,7 +85,8 @@ public class HomeActivity extends AppCompatActivity {
                             Log.i("datesanpshot", "exitsts: ");
                             if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == false) {
                                 Log.i("datesanpshot", "not have child DateOnfirebase: ");
-                                dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(0);
+                                long  kuy = 0 ;
+                                dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(kuy);
                             } else if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == true) {
                                 Log.i("datesanpshot", "have child DateOnfirebase: ");
                             }
@@ -147,7 +148,8 @@ public class HomeActivity extends AppCompatActivity {
                             Log.i("datesanpshot", "exitsts: ");
                             if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == false) {
                                 Log.i("datesanpshot", "not have child DateOnfirebase: ");
-                                dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(0);
+                                long  kuy = 0 ;
+                                dref.child("User").child(user.getUid()).child("Date").child(DateOnCalendarforfirebase).setValue(kuy);
                             } else if (dataSnapshot.hasChild("Date/" + DateOnCalendarforfirebase) == true) {
                                 Log.i("datesanpshot", "have child DateOnfirebase: ");
                             }

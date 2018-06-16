@@ -22,11 +22,11 @@
     <item
         android:id="@+id/tip4"
         android:icon="@drawable/ic_tips"
-        android:title="เมื่อลูกดิ้นเราจะสร้างความ"
+        android:title="เมื่อลูกดิ้นเราจะสร้างสัมพันธภาพ"
         />
     <item
     android:id="@+id/ti6"
-    android:title="สัมพันธภาพกับลูกน้อยได้อย่างไร"
+    android:title="กับลูกน้อยได้อย่างไร"
         android:fontFamily="@font/itim"
     />
     <item

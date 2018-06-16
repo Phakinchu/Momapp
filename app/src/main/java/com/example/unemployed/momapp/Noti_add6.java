@@ -80,13 +80,13 @@ public class Noti_add6 extends Service {
                 Log.i("count move ", "is" + count_move);
                 if (count_move <= 10 && count_move > 4) {
                     Log.i("count move on <10", "is" + count_move);
-                    addNotification("ผ่านมา 6 ชั่วโมงแล้ว", "ตอนนี้ลูกของคุณดิ้น " + count_move + " ครั้ง แนะนำให้คุณแม่นับการดิ้นของลูกต่อจนถึงเวลาต่อไป");
+                    addNotification("ผ่านมา 6 ชั่วโมงแล้ว", "ตอนนี้ลูกของคุณดิ้น " + count_move + " ครั้ง แนะนำให้คุณแม่นับการดิ้นของลูกต่อจนถึงเวลาต่อไป",HomeActivity.class);
                     stopSelf();
                     running = false;
                     return;
                 } else {
                     Log.i("count move on Another", "is" + count_move);
-                    addNotification("ผ่านมา 6 ชั่วโมงแล้ว", "ตอนนี้ลูกของคุณดิ้น " + count_move + "ครั้ง ซึ่งถือว่าอาจเกิดอันตรายหรือมีปัญหากับทารกในครรภ์ แนะนำให้คุณแม่ไปโรงพยาบาลทันทีที่ห้องคลอด รพ.จุฬาลงกรณ์ สภากาชาดไทย อาคารภูมิสิริมังคลานุสรณ์ชั้น 9 โซนเอ หรือ โทร02-2565273-4");
+                    addNotification("ผ่านมา 6 ชั่วโมงแล้ว", "ตอนนี้ลูกของคุณดิ้น " + count_move + "ครั้ง ซึ่งถือว่าอาจเกิดอันตรายหรือมีปัญหากับทารกในครรภ์ แนะนำให้คุณแม่ไปโรงพยาบาลทันทีที่ห้องคลอด รพ.จุฬาลงกรณ์ สภากาชาดไทย อาคารภูมิสิริมังคลานุสรณ์ชั้น 9 โซนเอ หรือ โทร02-2565273-4",ContractActicity.class);
                     stopSelf();
                     running = false;
                     return;
@@ -116,7 +116,7 @@ public class Noti_add6 extends Service {
     }
 
 
-    private void addNotification(String aMessage, String artibye) {
+    private void addNotification(String aMessage, String artibye,Class<?> activity) {
 //        Toast.makeText(this, "addNotification", Toast.LENGTH_SHORT).show();
         final int NOTIFY_ID = 1002;
 
@@ -146,7 +146,7 @@ public class Noti_add6 extends Service {
             }
             builder = new NotificationCompat.Builder(this, id);
 
-            intent = new Intent(this, HomeActivity.class);
+            intent = new Intent(this, activity);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
@@ -163,7 +163,7 @@ public class Noti_add6 extends Service {
 
             builder = new NotificationCompat.Builder(this);
 
-            intent = new Intent(this, HomeActivity.class);
+            intent = new Intent(this, activity);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
