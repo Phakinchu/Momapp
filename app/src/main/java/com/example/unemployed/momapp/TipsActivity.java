@@ -45,12 +45,17 @@ public class TipsActivity extends AppCompatActivity {
                         return true;
                     case R.id.tip4:
                         intent.putExtra("information",Readfile("tip4.txt"));
-                        intent.putExtra("header","เมื่อลูกดิ้นเราจะสร้างความสัมพันธภาพกับลูกน้อยได้อย่างไร");
+                        intent.putExtra("header","  เมื่อลูกดิ้นเราจะสร้างความสัมพันธภาพกับลูกน้อยได้อย่างไร");
                         startActivity(intent);
                         return true;
                     case R.id.tip5:
                         intent.putExtra("information",Readfile("tip5.txt"));
                         intent.putExtra("header","อาการผิดปกติที่ควรมาโรงพยาบาล");
+                        startActivity(intent);
+                        return true;
+                    case R.id.ti6:
+                        intent.putExtra("information",Readfile("tip4.txt"));
+                        intent.putExtra("header","  เมื่อลูกดิ้นเราจะสร้างความสัมพันธภาพกับลูกน้อยได้อย่างไร");
                         startActivity(intent);
                 }
                 return false;

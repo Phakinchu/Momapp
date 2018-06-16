@@ -106,6 +106,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="4dp"
             android:text="ไม่ได้ตั้งค่า"
+            android:fontFamily="@font/itim"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4" />
 
@@ -115,6 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
             android:text="ไม่ได้ตั้งค่า"
+            android:fontFamily="@font/itim"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="@+id/textView5" />
 
@@ -124,6 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:text="ไม่ได้ตั้งค่า"
+            android:fontFamily="@font/itim"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
@@ -133,6 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="ไม่ได้ตั้งค่า"
+            android:fontFamily="@font/itim"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -186,6 +190,7 @@
             android:layout_marginStart="8dp"
             android:gravity="center"
             android:text="ยังไม่ได้ตั้งเวลา"
+            android:fontFamily="@font/itim"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.112"
             app:layout_constraintStart_toEndOf="@+id/timemomsetis"

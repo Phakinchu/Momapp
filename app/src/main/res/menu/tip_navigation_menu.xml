@@ -6,14 +6,18 @@
         android:id="@+id/tip1"
         android:title="ความสำคัญและประโยชน์ของการนับลูกดิ้น"
         android:icon="@drawable/ic_tips"
+        android:fontFamily="@font/itim"
+
         />
     <item
         android:id="@+id/tip2"
         android:title="เมื่อลูกดิ้นคุณเเม่จะรู้สึกอย่างไร"
-        android:icon="@drawable/ic_tips"/>
+        android:icon="@drawable/ic_tips"
+        android:fontFamily="@font/itim"/>
     <item
         android:id="@+id/tip3"
         android:title="วิธีการนับลูกดิ้นแบบนับถึงสิบ"
+        android:fontFamily="@font/itim"
         android:icon="@drawable/ic_tips"/>
     <item
         android:id="@+id/tip4"
@@ -23,11 +27,13 @@
     <item
     android:id="@+id/ti6"
     android:title="สัมพันธภาพกับลูกน้อยได้อย่างไร"
+        android:fontFamily="@font/itim"
     />
     <item
         android:id="@+id/tip5"
         android:icon="@drawable/ic_tips"
         android:title="อาการผิดปกติที่ควรมาโรงพยาบาล"
+        android:fontFamily="@font/itim"
 
     />
 </menu>

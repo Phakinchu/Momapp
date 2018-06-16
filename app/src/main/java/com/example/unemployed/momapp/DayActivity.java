@@ -213,7 +213,8 @@ public class DayActivity extends AppCompatActivity {
                         Log.d("tran", "postTransaction:onComplete:" + databaseError);
                     }
                 });
-
+                finish();
+                startActivity(new Intent(DayActivity.this,HomeActivity.class));
 
             }
         });
@@ -240,7 +241,8 @@ public class DayActivity extends AppCompatActivity {
                         Log.d("tran", "postTransaction:onComplete:" + databaseError);
                     }
                 });
-
+                finish();
+                startActivity(new Intent(DayActivity.this,HomeActivity.class));
             }
         });
         number=babycount.getText().toString();
