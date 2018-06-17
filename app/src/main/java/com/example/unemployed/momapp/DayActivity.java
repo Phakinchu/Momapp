@@ -51,7 +51,7 @@ public class DayActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
-
+        Utils.getDatabase();
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
 //        final FirebaseUser user = mAuth.getCurrentUser();
@@ -315,14 +315,6 @@ public class DayActivity extends AppCompatActivity {
                 });
             }
         });
-        number=babycount.getText().toString();
-        if(number!=null){
-            /*int counter = Integer.parseInt(number);
-            for(int i = 0;i<counter;i++){
-                if(i<counter) checkBoxes[i].setChecked(true);
-                else checkBoxes[i].setChecked(false);
-            }*/
-        }
 
     }
 

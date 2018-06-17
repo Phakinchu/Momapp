@@ -60,6 +60,7 @@
 
         <activity android:name="com.example.unemployed.momapp.Setting_time" />
         <activity android:name="com.example.unemployed.momapp.First_time" />
+        <activity android:name="com.example.unemployed.momapp.Forget_Password" />
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"

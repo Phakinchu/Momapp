@@ -49,6 +49,7 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.setting_activity);
 //        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         Log.i("kuy","kuykyu");
+        Utils.getDatabase();
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() == null) {
             finish();

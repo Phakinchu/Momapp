@@ -35,7 +35,7 @@ public class Setting_time extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_time);
-
+        Utils.getDatabase();
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
         final FirebaseUser user = mAuth.getCurrentUser();
@@ -110,7 +110,7 @@ public class Setting_time extends AppCompatActivity {
                                 Log.i("AlarmManager 12", "not set !!!!!!!");
                                 //do nothing
                             }
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+
 
                         }
 

@@ -9,5 +9,6 @@ public class ContractActicity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contract_activity);
+        Utils.getDatabase();
     }
 }

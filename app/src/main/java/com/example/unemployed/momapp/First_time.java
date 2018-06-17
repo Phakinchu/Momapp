@@ -12,7 +12,7 @@ public class First_time extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time);
-
+        Utils.getDatabase();
         next = findViewById(R.id.next);
 
         next.setOnClickListener(new View.OnClickListener() {

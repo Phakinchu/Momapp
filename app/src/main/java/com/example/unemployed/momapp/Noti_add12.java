@@ -47,12 +47,12 @@ public class Noti_add12 extends Service {
     public void onCreate() {
         Log.i("ssssss", "onCreate");
 
-        Toast.makeText(this, "Service add12 Create", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Service add12 Create", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        Utils.getDatabase();
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -100,7 +100,7 @@ public class Noti_add12 extends Service {
     @Override
     public void onDestroy() {
         Log.i("ssssss", "onDestroy");
-        Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 

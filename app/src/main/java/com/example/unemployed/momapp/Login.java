@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Utils.getDatabase();
         mAunt = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
 
@@ -69,13 +70,13 @@ public class Login extends AppCompatActivity {
         });
 
 
-//        forgetpass.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent x =new Intent(getApplicationContext(),TipsActivity.class) ;
-//                startActivity(x);
-//            }
-//        });
+        forgetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent x =new Intent(getApplicationContext(),Forget_Password.class) ;
+                startActivity(x);
+            }
+        });
     }
 
     private void userLogin() {
