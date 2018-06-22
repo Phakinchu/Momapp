@@ -3,6 +3,7 @@ package com.example.unemployed.momapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.nfc.Tag;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,12 +41,24 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.password);
         progressDialog = new ProgressDialog(this);
         signup = findViewById(R.id.signup);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerUser();
-            }
-        });
+        try{
+            signup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    registerUser();
+                }
+            });
+
+        }
+        catch (Exception e) {
+            Log.i("Error", "Exception = "+e);
+            signup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    registerUser();
+                }
+            });
+        }
 
     }
 

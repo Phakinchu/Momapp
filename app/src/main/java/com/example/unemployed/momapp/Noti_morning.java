@@ -49,7 +49,7 @@ public class Noti_morning extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        addNotification("morning");
+        addNotification("morning","วันนี้คุณแม่อย่าลืมนับลูกดิ้นนะคะ");
         stopSelf();
 
         return START_NOT_STICKY;
@@ -64,7 +64,7 @@ public class Noti_morning extends Service {
     }
 
 
-    private void addNotification(String aMessage) {
+    private void addNotification(String aMessage,String asa) {
         Toast.makeText(this, "addNotification", Toast.LENGTH_SHORT).show();
         final int NOTIFY_ID = 1002;
 
@@ -100,7 +100,7 @@ public class Noti_morning extends Service {
 
             builder.setContentTitle(aMessage)  // required
                     .setSmallIcon(android.R.drawable.ic_popup_reminder) // required
-                    .setContentText(this.getString(R.string.app_name))  // required
+                    .setContentText(asa)  // required
                     .setDefaults(Notification.DEFAULT_ALL)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
@@ -116,7 +116,7 @@ public class Noti_morning extends Service {
 
             builder.setContentTitle(aMessage)                           // required
                     .setSmallIcon(android.R.drawable.ic_popup_reminder) // required
-                    .setContentText(this.getString(R.string.app_name))  // required
+                    .setContentText(asa)  // required
                     .setDefaults(Notification.DEFAULT_ALL)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
