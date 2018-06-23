@@ -30,7 +30,6 @@
         android:layout_marginTop="24dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contact">
 
@@ -38,13 +37,16 @@
             android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:fontFamily="@font/itim"
             android:lineSpacingExtra="6dp"
-            android:text="          หากมีปัญหาหรือต้องการคำปรึกษาคุณแม่สามารถมาพบแพทย์ได้ที่ห้องคลอด รพ.จุฬาลงกรณ์ สภากาชาดไทยอาคารภูมิสิริมังคลานุสรณ์ชั้น 9 โซนเอ หรือ โทร 02-2564000 ต่อ 80921,80922 และคลินิกฝากครรภ์ ภปร.ชั้น 8 รพ.จุฬาลงกรณ์ สภากาชาดไทย หรือโทร  02-256-5282 เวลา 8.00-16.00 น."
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="18dp" />
+
+
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
