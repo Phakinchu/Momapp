@@ -29,11 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class Login extends AppCompatActivity {
-    TextView username, password, forgetpass , signup ,welcome;
-    Button login ;
-    DatabaseReference dref ;
-    FirebaseAuth mAunt ;
+    TextView username, password, forgetpass, signup, welcome;
+    Button login;
+    DatabaseReference dref;
+    FirebaseAuth mAunt;
     private ProgressDialog progressDialog;
+    Session session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class Login extends AppCompatActivity {
         Utils.getDatabase();
         mAunt = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
-
+        session = new Session(this);
         progressDialog = new ProgressDialog(this);
 
         welcome = findViewById(R.id.textView8);
@@ -53,10 +55,15 @@ public class Login extends AppCompatActivity {
         login = findViewById(R.id.login);
         forgetpass = findViewById(R.id.forgetpass);
 
-
+        if (session.loggedin()) {
+            Intent x = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(x);
+            finish();
+        }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                session.isLogin(true);
                 userLogin();
             }
         });
@@ -64,7 +71,7 @@ public class Login extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent x =new Intent(getApplicationContext(),Register.class) ;
+                Intent x = new Intent(getApplicationContext(), Register.class);
                 startActivity(x);
             }
         });
@@ -73,7 +80,7 @@ public class Login extends AppCompatActivity {
         forgetpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent x =new Intent(getApplicationContext(),Forget_Password.class) ;
+                Intent x = new Intent(getApplicationContext(), Forget_Password.class);
                 startActivity(x);
             }
         });
@@ -113,26 +120,25 @@ public class Login extends AppCompatActivity {
 
                                 Calendar calendar = Calendar.getInstance();
                                 calendar.setTimeInMillis(System.currentTimeMillis());
-                                calendar.set(Calendar.HOUR_OF_DAY,8);
+                                calendar.set(Calendar.HOUR_OF_DAY, 8);
                                 calendar.set(Calendar.MINUTE, 00);
                                 calendar.set(Calendar.SECOND, 00);
-                                if(Calendar.getInstance().before(calendar)){
-                                    Intent j = new Intent(getApplicationContext(),Noti_morning.class) ;
+                                if (Calendar.getInstance().before(calendar)) {
+                                    Intent j = new Intent(getApplicationContext(), Noti_morning.class);
                                     Log.i("AlarmManager Moning", "set !!!!!!!");
                                     PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
-                                    AlarmManager alarmManager =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                                     alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-                                }
-                                else if(Calendar.getInstance().after(calendar)){
-                                    calendar.add( Calendar.DATE, 1 );
-                                    calendar.set(Calendar.HOUR_OF_DAY,8);
+                                } else if (Calendar.getInstance().after(calendar)) {
+                                    calendar.add(Calendar.DATE, 1);
+                                    calendar.set(Calendar.HOUR_OF_DAY, 8);
                                     calendar.set(Calendar.MINUTE, 00);
                                     calendar.set(Calendar.SECOND, 00);
 
-                                    Intent j = new Intent(getApplicationContext(),Noti_morning.class) ;
+                                    Intent j = new Intent(getApplicationContext(), Noti_morning.class);
                                     PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
-                                    AlarmManager alarmManager =  (AlarmManager) getSystemService(ALARM_SERVICE);
+                                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                                     alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
                                     Log.i("AlarmManager tmr moning", "set !!!!!!!");
                                     //do nothing
@@ -141,6 +147,7 @@ public class Login extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             }
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                             databaseError.getMessage();

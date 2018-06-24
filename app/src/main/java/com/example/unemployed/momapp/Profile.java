@@ -34,6 +34,7 @@ public class Profile extends AppCompatActivity {
     Button tohome, edit, home ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
+    Session session;
     private NotificationManager notifManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         dref = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = mAuth.getCurrentUser();
-
+        session = new Session(this);
         age = findViewById(R.id.age);
         pregnancy = findViewById(R.id.pregnancy);
         duedate = findViewById(R.id.duedate);
@@ -52,7 +53,6 @@ public class Profile extends AppCompatActivity {
         edit = findViewById(R.id.edit);
         mom = findViewById(R.id.mom);
         home = findViewById(R.id.home);
-
         tohome = findViewById(R.id.tohome);
 
         Query userQuery = dref.child("User").child(user.getUid());
@@ -110,6 +110,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
+                session.isLogin(false);
                 if(mAuth == null){
                     Log.i("user is", "null");
                     Log.i("useris", " "+mAuth);

@@ -23,7 +23,6 @@
         <activity android:name=".InformationActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".Register" />
-
         <service
             android:name=".Noti_morning"
             android:enabled="true"
