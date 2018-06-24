@@ -70,7 +70,31 @@ public class HomeActivity extends AppCompatActivity {
         cardView_setting = findViewById(R.id.cardsetting);
         cardView_contract = findViewById(R.id.cardcontract);
         //----------------------------------------------------------
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 8);
+        calendar.set(Calendar.MINUTE, 00);
+        calendar.set(Calendar.SECOND, 00);
+        if (Calendar.getInstance().before(calendar)) {
+            Intent j = new Intent(getApplicationContext(), Noti_morning.class);
+            Log.i("AlarmManager Moning", "set !!!!!!!");
+            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
+        } else if (Calendar.getInstance().after(calendar)) {
+            calendar.add(Calendar.DATE, 1);
+            calendar.set(Calendar.HOUR_OF_DAY, 8);
+            calendar.set(Calendar.MINUTE, 00);
+            calendar.set(Calendar.SECOND, 00);
+
+            Intent j = new Intent(getApplicationContext(), Noti_morning.class);
+            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            Log.i("AlarmManager tmr moning", "set !!!!!!!");
+            //do nothing
+        }
         //-------------------------------------------------------------------------
         cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
