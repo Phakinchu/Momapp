@@ -75,29 +75,92 @@ public class HomeActivity extends AppCompatActivity {
         calendar.set(Calendar.HOUR_OF_DAY, 8);
         calendar.set(Calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
-        if (Calendar.getInstance().before(calendar)) {
+            if (Calendar.getInstance().before(calendar)) {
 
-            Log.i("AlarmManager Moning", "set !!!!!!!");
-            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-            Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
-            intent.putExtra("AlarmAt","morning");
-            PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),3,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),broadcast);
+                Log.i("AlarmManager Moning", "set !!!!!!!");
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+                intent.putExtra("AlarmAt", "morning");
+                PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(), 3, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), broadcast);
 
-        } else if (Calendar.getInstance().after(calendar)) {
-            calendar.add(Calendar.DATE, 1);
-            calendar.set(Calendar.HOUR_OF_DAY, 8);
-            calendar.set(Calendar.MINUTE, 00);
-            calendar.set(Calendar.SECOND, 00);
+            } else if (Calendar.getInstance().after(calendar)) {
+                //เพิ่ม Noti_6,Noti_12 at Home//
+                FirebaseUser user = mAuth.getCurrentUser();
+                final Query userQuery = dref.child("User").child(user.getUid());
+                userQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
 
-            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-            Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
-            intent.putExtra("AlarmAt","morning");
-            PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),3,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),broadcast);
-            Log.i("AlarmManager tmr moning", "set !!!!!!!");
-            //do nothing
-        }
+                            String time = dataSnapshot.child("time").getValue(String.class);
+
+                            Calendar calendar2 = Calendar.getInstance();
+                            calendar2.setTimeInMillis(System.currentTimeMillis());
+                            calendar2.set(Calendar.HOUR_OF_DAY, findHour("6",time));
+                            calendar2.set(Calendar.MINUTE, findMin("6",time));
+                            calendar2.set(Calendar.SECOND, 00);
+
+                            Calendar calendar3 = Calendar.getInstance();
+                            calendar3.setTimeInMillis(System.currentTimeMillis());
+                            calendar3.set(Calendar.HOUR_OF_DAY, findHour("12",time));
+                            calendar3.set(Calendar.MINUTE, findMin("12",time));
+                            calendar3.set(Calendar.SECOND, 00);
+
+                            if(Calendar.getInstance().before(calendar2)){
+
+                                Log.i("AlarmManager 6", "set !!!!!!!");
+                                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                                Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+                                intent.putExtra("AlarmAt","six");
+                                PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar2.getTimeInMillis(),broadcast);
+
+                            }
+                            else if(Calendar.getInstance().after(calendar2)){
+                                Log.i("AlarmManager 6", "not set !!!!!!!");
+                                //do nothing
+                            }
+
+                            if(Calendar.getInstance().before(calendar3)){
+                                Log.i("AlarmManager 12", "set !!!!!!!");
+                                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                                Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+                                intent.putExtra("AlarmAt","twelve");
+                                PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis(),broadcast);
+                            }
+                            else if(Calendar.getInstance().after(calendar3)){
+                                Log.i("AlarmManager 12", "not set !!!!!!!");
+                                //do nothing
+                            }
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.i("setting time", "error "+databaseError);
+                    }
+                });
+                //เพิ่ม Noti_morning forwards 7 days//
+                for(int i =3 ;i<10;i++) {
+                    calendar.add(Calendar.DATE, i-2);
+                    calendar.set(Calendar.HOUR_OF_DAY, 8);
+                    calendar.set(Calendar.MINUTE, 00);
+                    calendar.set(Calendar.SECOND, 00);
+
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+                    intent.putExtra("AlarmAt", "morning");
+                    PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(), i, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), broadcast);
+                    Log.i("AlarmManager tmr moning", "set !!!!!!!");
+                }
+            }
+
         //-------------------------------------------------------------------------
         cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,6 +300,55 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    private Integer findHour(String time6or12 ,String time){
+        if(time6or12 == "6"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[0]);
+            x=x+6 ;
+            Log.i("x",""+x);
+            return x ;
+        }
+        else if(time6or12 == "12"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[0]);
+            x=x+12 ;
+            Log.i("x",""+x);
+            return x ;
+        }
+        return null ;
+    }
+
+    private Integer findMin(String time6or12 ,String time){
+        if(time6or12 == "6"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[1]);
+            Log.i("x",""+x);
+            return x ;
+        }
+        else if(time6or12 == "12"){
+            String[] arrB = time.split(":");
+            for(int i = 0; i<arrB.length; i++)
+            {
+                Log.i("split",arrB[i]);
+            }
+            Integer x = Integer.parseInt(arrB[1]);
+            Log.i("x",""+x);
+            return x ;
+        }
+        return null ;
     }
 
 }

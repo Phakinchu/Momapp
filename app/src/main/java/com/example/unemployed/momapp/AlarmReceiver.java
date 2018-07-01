@@ -27,7 +27,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     long count_move;
     DatabaseReference dref;
     FirebaseAuth mAuth;
-    boolean running = true;
     @Override
     public void onReceive(final Context context, Intent intent) {
         Utils.getDatabase();
