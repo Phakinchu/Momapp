@@ -58,7 +58,6 @@ public class SettingActivity extends AppCompatActivity {
         dref = FirebaseDatabase.getInstance().getReference();
 
         age = findViewById(R.id.age) ;
-        pregnancy = findViewById(R.id.pregnancy);
         duedate = findViewById(R.id.duedate);
         period = findViewById(R.id.period);
         time = findViewById(R.id.timePicker);
@@ -88,7 +87,6 @@ public class SettingActivity extends AppCompatActivity {
 
     private void saveUserInformation() {
         String Age = age.getText().toString().trim();
-        String Pregnancy = pregnancy.getText().toString().trim();
         String Duedate = duedate.getText().toString().trim();
         String Period = period.getText().toString().trim();
 
@@ -98,10 +96,6 @@ public class SettingActivity extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(Pregnancy)) {
-            Toast.makeText(this, "Could not save information, Pregnancy number is empty", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         if (TextUtils.isEmpty(Duedate)) {
             Toast.makeText(this, "Could not save information, Duedate number is empty", Toast.LENGTH_SHORT).show();
@@ -119,8 +113,6 @@ public class SettingActivity extends AppCompatActivity {
         dref.child("User").child(user.getUid()).child("age").setValue(Age);
         dref.child("User").child(user.getUid()).child("duedate").setValue(Duedate);
         dref.child("User").child(user.getUid()).child("period").setValue(Period);
-        dref.child("User").child(user.getUid()).child("pregnancy").setValue(Pregnancy);
-
 
         Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show();
     }

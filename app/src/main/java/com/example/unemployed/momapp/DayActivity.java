@@ -186,27 +186,7 @@ public class DayActivity extends AppCompatActivity {
                         }
                     }
 
-//                    long count = (long) dataSnapshot.child("Date").child(dateforfirebase).getValue();
                     String time = dataSnapshot.child("time").getValue(String.class);
-//                    babycount.setText(String.valueOf(count));
-//                    for(int i =0 ; i<= count-1 ; i++){
-//                        if((int) (long) count==0 || count > 24){
-//                            break;
-//                        }
-//                        else {
-//                            checkBoxes[i].setChecked(true);
-//                        }
-//                    }
-//
-//                    for(int i =23 ; i>=count ; i--){
-//                        if((int) (long) count<=0){
-//                            checkBoxes[0].setChecked(false);
-//                            break;
-//                        }
-//                        else {
-//                            checkBoxes[i].setChecked(false);
-//                        }
-//                   }
 
                     Calendar calendar2 = Calendar.getInstance();
                     calendar2.setTimeInMillis(System.currentTimeMillis());

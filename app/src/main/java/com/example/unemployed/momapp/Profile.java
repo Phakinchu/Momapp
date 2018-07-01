@@ -27,15 +27,17 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Profile extends AppCompatActivity {
-    TextView age, pregnancy, duedate, period, logout, mom;
-    Button tohome, edit, home ;
+    TextView age,pregnancy ,duedate, period, logout, mom;
+    Button tohome, edit, home;
+    long days ;
     DatabaseReference dref;
     FirebaseAuth mAuth;
     Session session;
-    private NotificationManager notifManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +48,10 @@ public class Profile extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         session = new Session(this);
         age = findViewById(R.id.age);
-        pregnancy = findViewById(R.id.pregnancy);
         duedate = findViewById(R.id.duedate);
         period = findViewById(R.id.period);
         logout = findViewById(R.id.logout);
+        pregnancy = findViewById(R.id.pregnancy);
         edit = findViewById(R.id.edit);
         mom = findViewById(R.id.mom);
         home = findViewById(R.id.home);
@@ -63,13 +65,42 @@ public class Profile extends AppCompatActivity {
                     String Age = dataSnapshot.child("age").getValue(String.class);
                     String Duedate = dataSnapshot.child("duedate").getValue(String.class);
                     String Period = dataSnapshot.child("period").getValue(String.class);
-                    String Pregnancy = dataSnapshot.child("pregnancy").getValue(String.class);
+//                    String Pregnancy = dataSnapshot.child("pregnancy").getValue(String.class);
                     String timesetting = dataSnapshot.child("time").getValue(String.class);
+
+                    try {
+                        String[] arrB = Period.split("/");
+                        for (int i = 0; i < arrB.length; i++) {
+                            Log.i("split", arrB[i]);
+                        }
+                        Integer day = Integer.parseInt(arrB[0]);
+                        Integer month = Integer.parseInt(arrB[1]);
+                        Integer year = Integer.parseInt(arrB[2]);
+
+                        Calendar calendar2 = Calendar.getInstance();
+                        calendar2.setTimeInMillis(System.currentTimeMillis());
+
+                        Calendar calendar3 = Calendar.getInstance();
+                        calendar3.setTimeInMillis(System.currentTimeMillis());
+                        calendar3.set(Calendar.DAY_OF_MONTH,day);
+                        calendar3.set(Calendar.MONTH,month-1 );
+                        calendar3.set(Calendar.YEAR, year-543);
+
+                        long kuy = calendar2.getTimeInMillis();
+                        long kuy2 = calendar3.getTimeInMillis();
+
+                        long diff = kuy - kuy2;
+
+                        long subda = Math.round((diff/(24 * 60 * 60 * 1000))/7) ;
+                        days = subda ;
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "ํตั้งค่าวันที่ผิดรูปแบบ", Toast.LENGTH_LONG).show();
+                    }
 
                     age.setText(Age);
                     duedate.setText(Duedate);
                     period.setText(Period);
-                    pregnancy.setText(Pregnancy);
+                    pregnancy.setText(Long.toString(days));
                     mom.setText(timesetting);
                 }
             }
@@ -111,18 +142,30 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
                 mAuth.signOut();
                 session.isLogin(false);
-                if(mAuth == null){
+                if (mAuth == null) {
                     Log.i("user is", "null");
-                    Log.i("useris", " "+mAuth);
-                }
-                else {
+                    Log.i("useris", " " + mAuth);
+                } else {
                     Log.i("user is", " not null ");
-                    Log.i("useris", " "+mAuth);
+                    Log.i("useris", " " + mAuth);
                 }
                 finish();
                 Intent x = new Intent(getApplicationContext(), Login.class);
                 startActivity(x);
             }
         });
+    }
+
+    private Integer findHour(String time6or12, String time) {
+
+        String[] arrB = time.split("/");
+        for (int i = 0; i < arrB.length; i++) {
+            Log.i("split", arrB[i]);
+        }
+        Integer x = Integer.parseInt(arrB[0]);
+        x = x + 6;
+        Log.i("x", "" + x);
+        return x;
+
     }
 }

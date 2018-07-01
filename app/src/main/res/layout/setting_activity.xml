@@ -84,37 +84,26 @@
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:text="อายุครรภ์ :"
-            style="@style/detail"
-            android:fontFamily="@font/itim"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
             android:id="@+id/textView6"
             style="@style/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="วันแรกของประจำเดือนครั้งสุดท้าย :"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/itim"
+            android:text="วันแรกของประจำเดือนครั้งสุดท้าย :"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <TextView
             android:id="@+id/textView7"
+            style="@style/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="วันครบกำหนดคลอด :"
-            style="@style/detail"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/itim"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            android:text="วันครบกำหนดคลอด :"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:layout_editor_absoluteX="16dp" />
 
         <EditText
             android:id="@+id/age"
@@ -134,40 +123,26 @@
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
 
         <EditText
-            android:id="@+id/pregnancy"
-            android:layout_width="132dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="4dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="เช่น 28 สัปดาห์"
-            android:inputType="number"
-            android:textSize="14dp"
-            android:fontFamily="@font/itim"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/age" />
-
-        <EditText
             android:id="@+id/duedate"
             android:layout_width="120dp"
             android:layout_height="39dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
+            android:fontFamily="@font/itim"
             android:gravity="center"
             android:hint="เช่น 24/05/2561"
             android:inputType="date"
-            android:fontFamily="@font/itim"
             android:textSize="14dp"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/pregnancy" />
+            app:layout_constraintTop_toBottomOf="@+id/age" />
 
         <EditText
             android:id="@+id/period"
             android:layout_width="120dp"
             android:layout_height="35dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
             android:ems="10"
             android:fontFamily="@font/itim"
             android:gravity="center"
