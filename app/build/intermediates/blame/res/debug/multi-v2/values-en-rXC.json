@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "C:\\Users\\Kin\\Momapp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
-                    "source": "/Users/doujifen/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/10b5bf48447d631a66070cd7b690c4f4/res/values-en-rXC/values-en-rXC.xml",
+                    "source": "C:\\Users\\Kin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\ce3136c393cffd74bd46c02026535862\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

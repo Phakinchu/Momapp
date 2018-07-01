@@ -35,7 +35,7 @@
             android:name=".Noti_add12"
             android:enabled="true"
             android:exported="false" />
-
+        <receiver android:name=".AlarmReceiver"/>
         <activity android:name=".Setting_time" />
         <activity android:name=".First_time" />
         <activity android:name=".Forget_Password"></activity>

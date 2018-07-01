@@ -87,11 +87,13 @@ public class Setting_time extends AppCompatActivity {
                             calendar3.set(Calendar.SECOND, 00);
 
                             if(Calendar.getInstance().before(calendar2)){
-                                Intent j = new Intent(getApplicationContext(),Noti_add6.class) ;
+
                                 Log.i("AlarmManager 6", "set !!!!!!!");
-                                PendingIntent pendingIntent2 = PendingIntent.getService(getApplicationContext(), 0, j, 0);
-                                AlarmManager alarmManager2 =  (AlarmManager) getSystemService(ALARM_SERVICE);
-                                alarmManager2.set(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), pendingIntent2);
+                                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                                Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+                                intent.putExtra("AlarmAt","six");
+                                PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar2.getTimeInMillis(),broadcast);
 
                             }
                             else if(Calendar.getInstance().after(calendar2)){
@@ -100,11 +102,12 @@ public class Setting_time extends AppCompatActivity {
                             }
 
                             if(Calendar.getInstance().before(calendar3)){
-                                Intent k = new Intent(getApplicationContext(),Noti_add12.class) ;
                                 Log.i("AlarmManager 12", "set !!!!!!!");
-                                PendingIntent pendingIntent3 = PendingIntent.getService(getApplicationContext(), 1, k, 0);
-                                AlarmManager alarmManager3 =  (AlarmManager) getSystemService(ALARM_SERVICE);
-                                alarmManager3.set(AlarmManager.RTC_WAKEUP, calendar3.getTimeInMillis(), pendingIntent3);
+                                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                                Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+                                intent.putExtra("AlarmAt","twelve");
+                                PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                                alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar3.getTimeInMillis(),broadcast);
                             }
                             else if(Calendar.getInstance().after(calendar2)){
                                 Log.i("AlarmManager 12", "not set !!!!!!!");

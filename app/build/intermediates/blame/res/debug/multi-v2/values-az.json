@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml",
+            "outputFile": "C:\\Users\\Kin\\Momapp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-az\\values-az.xml",
             "map": [
                 {
-                    "source": "/Users/doujifen/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/c19c0a4f41f65c89308be209a5e267d8/res/values-az/values.xml",
+                    "source": "C:\\Users\\Kin\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\39579ea89dc2f0e14c6f0403f2a5a39f\\res\\values-az\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/doujifen/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/10b5bf48447d631a66070cd7b690c4f4/res/values-az/values-az.xml",
+                    "source": "C:\\Users\\Kin\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\ca69e89e3d7e2b15404193cc22764e38\\res\\values-az\\values-az.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "38",
+                        "startColumns": "4",
+                        "startOffsets": "4695",
+                        "endColumns": "100",
+                        "endOffsets": "4791"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Kin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\ce3136c393cffd74bd46c02026535862\\res\\values-az\\values-az.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/doujifen/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/f943aca57eee52303b68555eba4462a3/res/values-az/values.xml",
+                    "source": "C:\\Users\\Kin\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\3885593543aed4fcdd90b0c3388d4445\\res\\values-az\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -52,23 +69,6 @@
                         "startOffsets": "1875,1986,2173,2308,2420,2625,2760,2912,3268,3493,3605,3785,3924,4127,4313,4407,4502",
                         "endColumns": "110,186,134,111,204,134,151,134,224,111,179,138,202,185,93,94,109",
                         "endOffsets": "1981,2168,2303,2415,2620,2755,2907,3042,3488,3600,3780,3919,4122,4308,4402,4497,4607"
-                    }
-                },
-                {
-                    "source": "/Users/doujifen/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/124460ccfb3d64d453051fc540f4f2b6/res/values-az/values-az.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "38",
-                        "startColumns": "4",
-                        "startOffsets": "4695",
-                        "endColumns": "100",
-                        "endOffsets": "4791"
                     }
                 }
             ]

@@ -76,11 +76,13 @@ public class HomeActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
         if (Calendar.getInstance().before(calendar)) {
-            Intent j = new Intent(getApplicationContext(), Noti_morning.class);
+
             Log.i("AlarmManager Moning", "set !!!!!!!");
-            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+            intent.putExtra("AlarmAt","morning");
+            PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),3,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),broadcast);
 
         } else if (Calendar.getInstance().after(calendar)) {
             calendar.add(Calendar.DATE, 1);
@@ -88,10 +90,11 @@ public class HomeActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, 00);
             calendar.set(Calendar.SECOND, 00);
 
-            Intent j = new Intent(getApplicationContext(), Noti_morning.class);
-            PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 3, j, 0);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+            Intent intent = new Intent(getApplicationContext(),AlarmReceiver.class);
+            intent.putExtra("AlarmAt","morning");
+            PendingIntent broadcast = PendingIntent.getBroadcast(getApplicationContext(),3,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),broadcast);
             Log.i("AlarmManager tmr moning", "set !!!!!!!");
             //do nothing
         }
