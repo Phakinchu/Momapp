@@ -62,24 +62,24 @@
 
         <TextView
             android:id="@+id/header_tip"
+            style="@style/system"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="60dp"
-            android:text="ข้อมูลการตั้งครรภ์"
-            style="@style/system"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/itim"
+            android:text="ข้อมูลการตั้งครรภ์"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/textView4"
+            style="@style/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="อายุคุณแม่ :"
-            style="@style/detail"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/itim"
+            android:text="อายุคุณแม่ :"
             app:layout_constraintStart_toStartOf="@+id/header_tip"
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
 
@@ -102,23 +102,23 @@
             android:layout_marginTop="36dp"
             android:fontFamily="@font/itim"
             android:text="วันครบกำหนดคลอด :"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <EditText
             android:id="@+id/age"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
+            android:fontFamily="@font/itim"
             android:gravity="center"
             android:hint="เช่น 38 /ปี"
             android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#818181"
             android:textSize="14dp"
-            android:fontFamily="@font/itim"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/header_tip" />
 

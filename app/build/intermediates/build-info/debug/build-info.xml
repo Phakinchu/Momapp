@@ -5,32 +5,31 @@
     build-mode="COLD"
     density="420dpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.2.0-beta01"
-    timestamp="1530456403991"
+    timestamp="1530464192652"
     token="5729008762605334595"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="689" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="132" />
+        duration="0" />
     <task
         name="verifier"
-        duration="25" />
+        duration="0" />
 
     <artifact
-        location="/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        location="/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1530452885550"
+        timestamp="1530464059885"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
@@ -74,20 +73,10 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="FIELD_TYPE_CHANGE"
-        timestamp="1530456182471"
+        timestamp="1530464192652"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1530456403991"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/doujifen/Documents/Phakin/Momapp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
     </build>
 
