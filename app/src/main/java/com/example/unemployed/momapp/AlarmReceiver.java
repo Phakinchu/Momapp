@@ -47,7 +47,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         count_move = dataSnapshot.child(dateforfirebase6).getValue(Integer.class);
                         Log.i("count move ", "is" + count_move);
-                        if (count_move <= 10 && count_move > 4) {
+                        if (count_move >= 4) {
                             Log.i("count move on <10", "is" + count_move);
                            Notification_6hour("ผ่านมา 6 ชั่วโมงแล้ว", "ตอนนี้ลูกของคุณดิ้น " + count_move + " ครั้ง แนะนำให้คุณแม่นับการดิ้นของลูกต่อจนถึงเวลาต่อไป",HomeActivity.class,context);
                             return;
